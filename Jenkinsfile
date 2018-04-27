@@ -3,23 +3,18 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'my first pipeline'
+        sh 'mvn clean package'
+        echo 'Code is compiled and jar is created.'
       }
     }
     stage('Test') {
       steps {
-        echo 'this is teting'
+        echo 'Testing will be done here.'
       }
     }
-    stage('deploye') {
-      steps {
-        echo 'this is deploye'
-      }
-    }
-    stage('Done') {
-      steps {
-        echo 'this is complete'
-      }
-    }
+  }
+  environment {
+    MAVEN_HOME = '/usr/local/apache-maven'
+    JAVA_HOME = '/usr/lib/jvm/jdk1.8.0_05'
   }
 }
